@@ -18,7 +18,6 @@ body {
 
 button {
     padding: 12px 24px;
-    margin: 12px;
     font-size: 16px;
     background-color: #a53dfa;
     text-transform: uppercase;
@@ -43,7 +42,6 @@ select {
     background-size: 10px; /* Ajusta o tamanho do ícone */
     border: 1px solid #1b1b1b; /* Ajuste o estilo da borda, se necessário */
     border-radius: 4px; /* Opcional: arredondar bordas */
-    margin: 12px;
     font-size: 16px;
     width: 248px;
     color: #fff
@@ -226,13 +224,18 @@ select {
         padding: 24px;
     }
 
-    .deck-selector {
+    .deck-selector, .method-selector {
         display: flex;
         flex-direction: column;
+        width: 100%
     } 
     
     select {
-        width:auto;
+        width:100%;
+    }
+
+    button {
+        width: 100%;
     }
 
     img.card-image {
