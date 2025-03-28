@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tarot Reader</h1>
+        <select id="deck">
+            <option value="major">Arcanos Maiores</option>
+            <option value="minor">Arcanos Menores</option>
+            <option value="all">Todos os Arcanos</option> <!-- Nova opção -->
+        </select>
+        <button id="draw">Sortear Carta</button>
+        <div id="card-container">
+            <p id="card-name"></p>
+            <img id="card-image" style="display: none;" alt="Carta sorteada">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

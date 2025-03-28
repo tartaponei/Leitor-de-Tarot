@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+select, button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+#card-image {
+    max-width: 200px;
+    margin-top: 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+}
+
+#card-name {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#card-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
