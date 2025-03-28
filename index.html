@@ -9,17 +9,24 @@
 <body>
     <div class="container">
         <h1>Leitor de Tarô</h1>
-        <div class="deck-selector">
-            <select id="deck">
-                <option value="major">Arcanos Maiores</option>
-                <option value="minor">Arcanos Menores</option>
-                <option value="all">Todos os Arcanos</option> <!-- Nova opção -->
-            </select>
-            <button id="draw">Sortear Carta</button>
+        <div class="controls">
+            <div class="deck-selector">
+                <select id="deck">
+                    <option value="major">Arcanos Maiores</option>
+                    <option value="minor">Arcanos Menores</option>
+                    <option value="all">Todos os Arcanos</option>
+                </select>
+            </div>
+            <div class="method-selector">
+                <select id="method">
+                    <option value="single">Carta Única</option>
+                    <option value="ppf">Passado, Presente e Futuro</option>
+                </select>
+            </div>
         </div>
-        <div class="card-container">
-            <p id="card-name"></p>
-            <img id="card-image" style="display: none;" alt="Carta sorteada">
+            <button id="draw">JOGAR</button>
+        <div id="card-display">
+            <!-- Dinâmico - será preenchido pelo JavaScript -->
         </div>
     </div>
     <script src="script.js"></script>

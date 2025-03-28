@@ -141,3 +141,86 @@ document.getElementById("draw").addEventListener("click", () => {
         imgElement.alt = card.name;
     };
 });
+
+// Mantenha seu objeto decks existente igual
+
+function getRandomCard(deckType) {
+    const deck = decks[deckType];
+    const randomIndex = Math.floor(Math.random() * deck.names.length);
+    
+    return {
+        name: deck.names[randomIndex],
+        fileName: deck.fileNames[randomIndex] + '.png',
+        folder: deckType === 'all' ? 
+            (randomIndex < decks.major.names.length ? 'major' : 'minor') : 
+            deck.folder
+    };
+}
+
+function displaySingleCard(deckType) {
+    const card = getRandomCard(deckType);
+    const imagePath = `imagens/${card.folder}/${card.fileName}`;
+    
+    const cardDisplay = document.getElementById('card-display');
+    cardDisplay.innerHTML = `
+        <div class="card-position">
+            <p class="card-name">${card.name}</p>
+            <img src="${imagePath}?t=${Date.now()}" alt="${card.name}" class="card-image">
+        </div>
+    `;
+}
+
+function displayPastPresentFuture(deckType) {
+    const cardDisplay = document.getElementById('card-display');
+    cardDisplay.innerHTML = `
+        <div class="card-spread">
+            <div class="card-position">
+                <span class="position-label">Passado</span>
+                <p id="past-name" class="card-name"></p>
+                <img id="past-card" class="card-image">
+            </div>
+            <div class="card-position">
+                <span class="position-label">Presente</span>
+                <p id="present-name" class="card-name"></p>
+                <img id="present-card" class="card-image">
+            </div>
+            <div class="card-position">
+                <span class="position-label">Futuro</span>
+                <p id="future-name" class="card-name"></p>
+                <img id="future-card" class="card-image">
+            </div>
+        </div>
+    `;
+
+    // Carrega as 3 cartas
+    loadCard('past', deckType);
+    loadCard('present', deckType);
+    loadCard('future', deckType);
+}
+
+function loadCard(position, deckType) {
+    const card = getRandomCard(deckType);
+    const imagePath = `imagens/${card.folder}/${card.fileName}`;
+    const imgElement = document.getElementById(`${position}-card`);
+    const nameElement = document.getElementById(`${position}-name`);
+
+    imgElement.src = imagePath + `?t=${Date.now()}`;
+    imgElement.alt = card.name;
+    nameElement.textContent = card.name;
+
+    imgElement.onerror = () => {
+        nameElement.textContent = `Erro ao carregar carta`;
+        imgElement.style.display = 'none';
+    };
+}
+
+document.getElementById("draw").addEventListener("click", () => {
+    const deckType = document.getElementById("deck").value;
+    const method = document.getElementById("method").value;
+    
+    if (method === 'single') {
+        displaySingleCard(deckType);
+    } else if (method === 'ppf') {
+        displayPastPresentFuture(deckType);
+    }
+});
