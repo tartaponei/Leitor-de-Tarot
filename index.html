@@ -8,14 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Tarot Reader</h1>
-        <select id="deck">
-            <option value="major">Arcanos Maiores</option>
-            <option value="minor">Arcanos Menores</option>
-            <option value="all">Todos os Arcanos</option> <!-- Nova opção -->
-        </select>
-        <button id="draw">Sortear Carta</button>
-        <div id="card-container">
+        <h1>Leitor de Tarô</h1>
+        <div class="deck-selector">
+            <select id="deck">
+                <option value="major">Arcanos Maiores</option>
+                <option value="minor">Arcanos Menores</option>
+                <option value="all">Todos os Arcanos</option> <!-- Nova opção -->
+            </select>
+            <button id="draw">Sortear Carta</button>
+        </div>
+        <div class="card-container">
             <p id="card-name"></p>
             <img id="card-image" style="display: none;" alt="Carta sorteada">
         </div>

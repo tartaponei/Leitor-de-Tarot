@@ -54,15 +54,15 @@ const decks = {
             "62-kingofswords", "63-queenofswords", "64-knightofswords", "65-pageofswords",
             
             // Copas (38-47 numeradas, 66-69 corte)
-            "32-aceofcups", "33-twoofcups", "34-threeofcups", "35-fourofcups",
-            "36-fiveofcups", "37-sixofcups", "38-sevenofcups", "39-eightofcups",
-            "40-nineofcups", "41-tenofcups",
+            "38-aceofcups", "39-twoofcups", "40-threeofcups", "41-fourofcups",
+            "42-fiveofcups", "43-sixofcups", "44-sevenofcups", "45-eightofcups",
+            "46-nineofcups", "47-tenofcups",
             "66-kingofcups", "67-queenofcups", "68-knightofcups", "69-pageofcups",
             
             // Paus (54-63 numeradas, 70-73 corte)
-            "42-aceofwands", "43-twoofwands", "44-threeofwands", "45-fourofwands",
-            "46-fiveofwands", "47-sixofwands", "48-sevenofwands", "49-eightofwands",
-            "50-nineofwands", "51-tenofwands",
+            "54-aceofwands", "55-twoofwands", "56-threeofwands", "57-fourofwands",
+            "58-fiveofwands", "59-sixofwands", "60-sevenofwands", "61-eightofwands",
+            "62-nineofwands", "63-tenofwands",
             "70-kingofwands", "71-queenofwands", "72-knightofwands", "73-pageofwands",
             
             // Ouros (74-83 numeradas, 84-87 corte)
@@ -76,68 +76,3 @@ const decks = {
         maxId: 87
     }
 };
-
-// Combina os baralhos
-decks.all = {
-    names: [...decks.major.names, ...decks.minor.names],
-    fileNames: [...decks.major.fileNames, ...decks.minor.fileNames],
-    folder: "",
-    minId: 0,
-    maxId: 87
-};
-
-function getRandomCard(deckType) {
-    const deck = decks[deckType];
-    let randomIndex;
-    
-    if (deckType === 'all') {
-        // Para o deck 'all', sorteamos considerando todos os índices possíveis
-        randomIndex = Math.floor(Math.random() * deck.names.length);
-    } else {
-        // Para decks específicos, sorteamos dentro do intervalo de nomes
-        randomIndex = Math.floor(Math.random() * deck.names.length);
-    }
-    
-    // Extrai o ID do nome do arquivo
-    const fileNameParts = deck.fileNames[randomIndex].split('-');
-    const cardId = parseInt(fileNameParts[0]);
-    
-    return {
-        id: cardId,
-        name: deck.names[randomIndex],
-        fileName: deck.fileNames[randomIndex] + '.png',
-        folder: deckType === 'all' ? 
-            (randomIndex < decks.major.names.length ? 'major' : 'minor') : 
-            deck.folder
-    };
-}
-
-document.getElementById("draw").addEventListener("click", () => {
-    const deckType = document.getElementById("deck").value;
-    const card = getRandomCard(deckType);
-    const imagePath = `imagens/${card.folder}/${card.fileName}`;
-    
-    const imgElement = document.getElementById("card-image");
-    const nameElement = document.getElementById("card-name");
-    
-    console.log(`Sorteio: ID ${card.id} | Nome: ${card.name} | Arquivo: ${card.fileName} | Caminho: ${imagePath}`);
-    
-    // Reset e carregamento
-    imgElement.src = "";
-    imgElement.style.display = "none";
-    nameElement.textContent = "Carregando...";
-    
-    imgElement.src = imagePath + `?t=${Date.now()}`;
-    nameElement.textContent = card.name;
-    
-    imgElement.onerror = () => {
-        console.error("Imagem não encontrada:", imagePath);
-        nameElement.textContent = `Erro: ${card.name} (ID: ${card.id}) não encontrada!`;
-        imgElement.style.display = "none";
-    };
-    
-    imgElement.onload = () => {
-        imgElement.style.display = "block";
-        imgElement.alt = card.name;
-    };
-});

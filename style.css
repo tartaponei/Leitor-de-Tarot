@@ -1,24 +1,52 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f5f5f5;
+    background-color: #000000;
     margin: 0;
     padding: 20px;
+    color: #fff
 }
 
 .container {
     max-width: 600px;
     margin: 0 auto;
-    background: white;
+    background: #0c0c0c;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-select, button {
-    padding: 10px;
-    margin: 10px;
+button {
+    padding: 12px 24px;
+    margin: 12px;
     font-size: 16px;
+    background-color: #a53dfa;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #0f001d;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8927da;
+}
+
+select {
+    padding: 12px;
+    -webkit-appearance: none; /* Remove o estilo padrão do navegador */
+    -moz-appearance: none; /* Para navegadores baseados em Gecko */
+    appearance: none; /* Remove o estilo padrão */
+    background: #181818 url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path fill="white" d="M0 0l5 6 5-6z"/></svg>') no-repeat right 12px center;
+    background-size: 10px; /* Ajusta o tamanho do ícone */
+    border: 1px solid #1b1b1b; /* Ajuste o estilo da borda, se necessário */
+    border-radius: 4px; /* Opcional: arredondar bordas */
+    margin: 12px;
+    font-size: 16px;
+    width: 196px;
+    color: #fff
 }
 
 #card-image {
@@ -29,12 +57,30 @@ select, button {
 }
 
 #card-name {
-    font-weight: bold;
-    margin-top: 10px;
+    font-weight: 400;
 }
 
 #card-image {
     max-width: 100%;
     height: auto;
     margin: 20px auto;
+}
+
+.card-container {
+    margin-top: 32px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 24px;
+    }
+
+    .deck-selector {
+        display: flex;
+        flex-direction: column;
+    } 
+    
+    select {
+        width:auto;
+    }
 }
